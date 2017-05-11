@@ -3,7 +3,7 @@
  */
 
 function displayLoginForm() {
-  window.location.replace("/temphr-jquery/production/login.html");
+  window.location.replace("/temphr-front/production/login.html");
 }
 
 //Check auth
@@ -18,8 +18,26 @@ var checkLogin = function () {
   if (currentTime - window.localStorage.loginTime > 86400000) {
     window.localStorage.authToken = null;
     window.localStorage.refreshToken = null;
-    displayLoginForm();
+
   }
+};
+
+var refreshToken = function (callback) {
+  $.ajax({
+    url: 'http://localhost:8080/api/auth/token',
+    method: 'GET',
+    headers: {"X-Authorization": 'Bearer '+localStorage.getItem('refreshToken')},
+    dataType: 'json',
+    contentType: 'application/json',
+    error: function (jqXHR, errorText, error) {
+      displayLoginForm();
+
+    },
+    success: function (data) {
+      window.localStorage.authToken = data.token;
+      callback();
+    }
+  });
 };
 
 

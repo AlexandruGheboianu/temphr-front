@@ -1,25 +1,22 @@
 /**
  * Created by agheboianu on 11.05.2017.
  */
-var viewData = {
-  firstName:   window.localStorage.firstName,
-  lastName: window.localStorage.lastName
+
+var getEmployees = function () {
+  $.ajax({
+    url: 'http://localhost:8080/api/employees',
+    method: 'GET',
+    headers: {"X-Authorization": 'Bearer ' + localStorage.getItem('authToken')},
+    dataType: 'json',
+    contentType: 'application/json',
+    error: function (jqXHR, errorText, error) {
+      console.log(jqXHR.responseJSON.errorCode);
+      refreshToken(getEmployees);
+    },
+    success: function (data) {
+      console.log(data);
+    }
+  });
 };
-$(document).ready(function () {
-  $.Mustache.load('../templates/topNav.htm')
-  .done(function () {
-    $('#top_nav').mustache('user-menu', viewData);
-  });
 
-  $.Mustache.load('../templates/sidebar.htm')
-  .done(function () {
-    $('#sidebar').mustache('sidebar-menu-wrapper');
-    SIDEBAR();
-  });
-
-  $.Mustache.load('../templates/menuProfile.htm')
-  .done(function () {
-    $('#menu_profile').mustache('menu-profile', viewData);
-  });
-});
-
+getEmployees();

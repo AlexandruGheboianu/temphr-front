@@ -33,7 +33,7 @@ var doLogin = function () {
       window.localStorage.lastName = data.lastName;
       window.localStorage.roles = data.roles.split('#');
       window.localStorage.loginTime = new Date().getTime();
-      window.location.replace("/temphr-jquery/production/index.html");
+      window.location.replace("/temphr-front/production/index.html");
     }
   });
 }

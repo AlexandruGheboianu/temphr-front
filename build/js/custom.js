@@ -6,17 +6,16 @@
 
 var CURRENT_URL = window.location.href.split('?')[0],
     $BODY = $('body'),
-    $MENU_TOGGLE = $('#menu_toggle'),
-    $SIDEBAR_MENU = $('#sidebar-menu'),
     $SIDEBAR_FOOTER = $('.sidebar-footer'),
     $LEFT_COL = $('.left_col'),
     $RIGHT_COL = $('.right_col'),
     $NAV_MENU = $('.nav_menu'),
     $FOOTER = $('footer');
 
-
 // Sidebar
-$(document).ready(function () {
+var SIDEBAR = (function () {
+  $SIDEBAR_MENU = $('#sidebar-menu');
+  $MENU_TOGGLE = $('#menu_toggle');
   // TODO: This is some kind of easy fix, maybe we can improve this
   var setContentHeight = function () {
     // reset height
@@ -100,34 +99,6 @@ $(document).ready(function () {
   }
 });
 // /Sidebar
-
-// Panel toolbox
-$(document).ready(function () {
-  $('.collapse-link').on('click', function () {
-    var $BOX_PANEL = $(this).closest('.x_panel'),
-        $ICON = $(this).find('i'),
-        $BOX_CONTENT = $BOX_PANEL.find('.x_content');
-
-    // fix for some div with hardcoded fix class
-    if ($BOX_PANEL.attr('style')) {
-      $BOX_CONTENT.slideToggle(200, function () {
-        $BOX_PANEL.removeAttr('style');
-      });
-    } else {
-      $BOX_CONTENT.slideToggle(200);
-      $BOX_PANEL.css('height', 'auto');
-    }
-
-    $ICON.toggleClass('fa-chevron-up fa-chevron-down');
-  });
-
-  $('.close-link').click(function () {
-    var $BOX_PANEL = $(this).closest('.x_panel');
-
-    $BOX_PANEL.remove();
-  });
-});
-// /Panel toolbox
 
 // Tooltip
 $(document).ready(function () {

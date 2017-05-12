@@ -10,11 +10,15 @@ var getEmployees = function () {
     dataType: 'json',
     contentType: 'application/json',
     error: function (jqXHR, errorText, error) {
-      console.log(jqXHR.responseJSON.errorCode);
       refreshToken(getEmployees);
     },
     success: function (data) {
-      console.log(data);
+      $.Mustache.load('../templates/components/employee_table.htm')
+      .done(function () {
+        $('#employee_table').mustache('paginated-table', data);
+        ICHECK();
+        TABLE();
+      });
     }
   });
 };

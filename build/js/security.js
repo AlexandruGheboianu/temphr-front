@@ -35,6 +35,7 @@ var refreshToken = function (callback) {
     },
     success: function (data) {
       window.localStorage.authToken = data.token;
+      window.localStorage.loginTime = new Date().getTime();
       callback();
     }
   });

@@ -23,7 +23,7 @@
   <link href="css/maps/jquery-jvectormap-2.0.3.css" rel="stylesheet"/>
 
   <!-- Custom Theme Style -->
-  <link href="../build/css/custom.min.css" rel="stylesheet">
+  <link href="../build/css/custom.css" rel="stylesheet">
 </head>
 
 <body class="nav-md">
@@ -39,7 +39,7 @@
         <div class="clearfix"></div>
 
         <!-- menu profile quick info -->
-      <div id="menu_profile"></div>
+        <div id="menu_profile"></div>
         <!-- /menu profile quick info -->
 
         <br/>
@@ -53,11 +53,21 @@
     </div>
 
     <!-- top navigation -->
-    <div id="top_nav"></div>
+    <div id="top_nav" class="top_nav"></div>
     <!-- /top navigation -->
 
     <!-- page content -->
     <div class="right_col" role="main">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Employees</h2>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <div class="center table-responsive" id="employee_table"></div>
+        </div>
+      </div>
+
     </div>
 
 
@@ -82,7 +92,8 @@
 <!--Mustache templates-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
 <script src="js/mustache/jquery.mustache.js"></script>
-
+<!-- iCheck -->
+<script src="../vendors/iCheck/icheck.min.js"></script>
 <!-- Custom Theme Scripts -->
 
 <script src="../build/js/index.js"></script>

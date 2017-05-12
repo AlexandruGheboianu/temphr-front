@@ -11,7 +11,7 @@
     </tr>
     </thead>
     <tbody>
-    {{#content}}
+    {{#data.content}}
     <tr>
       <td style="width: 2%;">
         <input type="checkbox" class="flat" name="table_records">
@@ -20,17 +20,20 @@
       <td>{{firstName}} {{lastName}}</td>
       <td>{{email}}</td>
     </tr>
-    {{/content}}
+    {{/data.content}}
     </tbody>
   </table>
   <div class="row">
-    <div class="col-lg-12">Showing 1 to 10 of 2
+    <div class="col-lg-12">Showing {{startElement}} to {{endElement}} of {{data.totalElements}}
     </div>
     <div class="col-lg-12">
       <div class="pagination">
-        <a href="#">Previous</a>
-        <a href="#" class="active">1</a>
-        <a href="#">Next</a>
+        <a href="#" onclick="{{previous}}">Previous</a>
+        {{#pages}}
+        <a href="#" id="emp_page_{{index}}" onclick="showPage(this);">{{.}}</a>
+        {{/pages}}
+        {{resetIndex}}
+        <a href="#" onclick="{{next}}">Next</a>
       </div>
     </div>
   </div>

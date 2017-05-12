@@ -252,11 +252,11 @@ if (typeof NProgress != 'undefined') {
 
 })(jQuery, 'smartresize');
 
-var viewData = {
-  firstName: window.localStorage.firstName,
-  lastName: window.localStorage.lastName
-};
 $(document).ready(function () {
+  let viewData = {
+    firstName: window.localStorage.firstName,
+    lastName: window.localStorage.lastName
+  };
   $.Mustache.load('../templates/topNav.htm')
   .done(function () {
     $('#top_nav').mustache('user-menu', viewData);

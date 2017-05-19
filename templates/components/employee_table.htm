@@ -8,6 +8,7 @@
       <th class="center">ID</th>
       <th class="center">Name</th>
       <th class="center">Email</th>
+      <th class="center">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -19,6 +20,20 @@
       <td>{{id}}</td>
       <td>{{firstName}} {{lastName}}</td>
       <td>{{email}}</td>
+      <td>
+        <div class="btn-group">
+          <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle btn-sm" type="button" aria-expanded="false">Actions <span class="caret"></span>
+          </button>
+          <ul role="menu" class="dropdown-menu">
+            <li><a href="#">Edit</a>
+            </li>
+           
+            <li class="divider"></li>
+            <li><a href="#">Delete</a>
+            </li>
+          </ul>
+        </div>
+      </td>
     </tr>
     {{/data.content}}
     </tbody>
